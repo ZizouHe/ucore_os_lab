@@ -4,7 +4,7 @@
 
 struct entry {
 
-    list_entry_t node;
+    list_entry_t node; //双向链表
     int num;
 };
 
@@ -22,7 +22,7 @@ int main() {
     }
     //reverse list all node
     while ((p = list_prev(p)) != &head.node)
-        printf("%d\n", ((struct entry *)p)->num);
+        printf("%d\n", ((struct entry *)p)->num); // 指针强制类型转换
     return 0;
 }
 
@@ -32,15 +32,15 @@ int main() {
 #if 0
 include "list.h";
 
-void main() { 
-	node_t node1; 
-	node1.data = 1; 
-	list_entry_t *n1 = &nodes1.node_link; 
-	node_t node2; 
-	node2.data = 2; 
-	list_init(n1); 
-	list_add_after(n1, &nodes2.node_link); 
-    printf("\n"); 
+void main() {
+	node_t node1;
+	node1.data = 1;
+	list_entry_t *n1 = &nodes1.node_link;
+	node_t node2;
+	node2.data = 2;
+	list_init(n1);
+	list_add_after(n1, &nodes2.node_link);
+    printf("\n");
 }
 #endif
 
@@ -70,11 +70,11 @@ typedef struct {
 }free_area_t;
 
 int main(){
-             
+
     free_area_t free_area;
     struct page pg;
     free_area.free_list.next = &pg.page_link;
-        
+
     pg.test = 1;
     pg.page_link.next = &free_area.free_list;
     list_entry_t* le = &free_area.free_list;
@@ -184,8 +184,8 @@ struct MyDataType {
 struct MyDataType x, y, z;
 
 void display() {
-    printf("x = %lx prev = %lx next = %lx \n", &x.list, x.list.prev, x.list.next); 
-    printf("y = %lx prev = %lx next = %lx \n", &y.list, y.list.prev, y.list.next); 
+    printf("x = %lx prev = %lx next = %lx \n", &x.list, x.list.prev, x.list.next);
+    printf("y = %lx prev = %lx next = %lx \n", &y.list, y.list.prev, y.list.next);
     printf("z = %lx prev = %lx next = %lx \n", &z.list, z.list.prev, z.list.next);
     printf("----------------------------------\n");
 }
@@ -196,7 +196,7 @@ int main() {
     list_init(&y.list);
     list_init(&z.list);
 
-    display(); 
+    display();
 
     // insert element
     list_add(&x.list, &y.list);

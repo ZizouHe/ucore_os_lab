@@ -1,8 +1,10 @@
 #README
 Try below command
+
 ```
 gcc -g -m32 lab0_ex3.c 2>&1|tee make.log
 ```
+
 If you get gcc's error, try to read make.log and fix the bugs.
 
 If gcc successed, then you will get a.out. 
@@ -10,6 +12,7 @@ If gcc successed, then you will get a.out.
 Try to answer below question. 
 
 对于如下的代码段，
+
 ```
 ...
 #define STS_CG32        0xC            // 32-bit Call Gate
@@ -43,11 +46,18 @@ Try to answer below question.
 ... 
 
 ```
+
 如果在其他代码段中有如下语句，
+
 ```
 unsigned intr;
 intr=8;
 SETGATE(intr, 0,1,2,3);
 ```
+
 请问执行上述指令后， intr的值是多少？
 
+
+## My Understandings
+
+**见代码文件注释**
